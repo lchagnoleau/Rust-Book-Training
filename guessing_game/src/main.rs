@@ -16,10 +16,12 @@ fn main() {
             .read_line(&mut guess)
             .expect("failed to read line");
 
-        let guess: u8 = guess
+        let guess: u8 = match guess
             .trim() // Delete all whitespace, newline etc...
-            .parse() // Convert String to the type of u8
-            .expect("Please type a number!"); // If the conversion fail
+            .parse() { // Convert String to the type of u8
+                Ok(num) => num,
+                Err(_) => continue,
+            };
 
         println!("You entered: {guess}");
 
