@@ -8,23 +8,25 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..=100);
     println!("The secret generated number is: {}", secret_number);
 
-    println!("Please enter an number between 1 and 100:");
+    loop {
+        println!("Please enter an number between 1 and 100:");
 
-    let mut guess = String::new();
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("failed to read line");
+        let mut guess = String::new();
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("failed to read line");
 
-    let guess: u8 = guess
-        .trim() // Delete all whitespace, newline etc...
-        .parse() // Convert String to the type of u8
-        .expect("Please type a number!"); // If the conversion fail
+        let guess: u8 = guess
+            .trim() // Delete all whitespace, newline etc...
+            .parse() // Convert String to the type of u8
+            .expect("Please type a number!"); // If the conversion fail
 
-    println!("You entered: {guess}");
+        println!("You entered: {guess}");
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => println!("You win!"),
+        }
     }
 }
