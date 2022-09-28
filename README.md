@@ -18,3 +18,19 @@ Compile it:
 rustc main.rs
 ```
 
+### 1.3 Hello Cargo
+
+```bash
+cargo new hello_cargo
+cd hello_cargo
+
+# Debug
+cargo check
+cargo build
+cargo run
+
+#Release
+cargo build --release
+cargo run --release
+```
+
